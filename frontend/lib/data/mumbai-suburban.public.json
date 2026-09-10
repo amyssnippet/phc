@@ -1,0 +1,700 @@
+[
+  {
+    "id": "732059",
+    "externalFacilityId": "732059",
+    "name": "DDU2 RCH UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400081",
+    "address": "DDU 2 Rch uphc near sachin society, opp trimurti narayan blg nanepada mithgar road mulund east",
+    "latitude": 19.1650701,
+    "longitude": 72.9531871,
+    "location": {
+      "latitude": 19.1650701,
+      "longitude": 72.9531871
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:46:49.784+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "754637",
+    "externalFacilityId": "754637",
+    "name": "Deonar Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400043",
+    "address": "DEONAR MUNCIPAL COLONY, DEONAR, GOVANDI WEST, MUMBAI",
+    "latitude": 19.053867793870282,
+    "longitude": 72.92310446161179,
+    "location": {
+      "latitude": 19.053867793870282,
+      "longitude": 72.92310446161179
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-07-13T15:04:22.624+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701324",
+    "externalFacilityId": "701324",
+    "name": "Dhanukarwadi UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "Shaileja vijay girkar davakhana, Dahanukarwadi,m g road, opp smashan bhoomi road, Kandivali west",
+    "latitude": 19.2070803,
+    "longitude": 72.8376889,
+    "location": {
+      "latitude": 19.2070803,
+      "longitude": 72.8376889
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-24T06:10:28.679+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "676946",
+    "externalFacilityId": "676946",
+    "name": "Din Dayal Upadhya Marg 2 Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400081",
+    "address": "DDU 2 RCH hp opp trimurti Narayan blg near Sachin society nanepada mithgar road Mulund East ",
+    "latitude": 19.157097,
+    "longitude": 72.952572,
+    "location": {
+      "latitude": 19.157097,
+      "longitude": 72.952572
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": true,
+    "specialties": [
+      "General Medicine",
+      "Obstetrics & Gynaecology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-24T06:10:28.929+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701315",
+    "externalFacilityId": "701315",
+    "name": "Din Dayal Upadhya Marg Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400080",
+    "address": "Opp Platinum Hospital & Croma Showroom, Dumping Road, Near Mulund west checknaka, Mulund west",
+    "latitude": 19.182669,
+    "longitude": 72.954255,
+    "location": {
+      "latitude": 19.182669,
+      "longitude": 72.954255
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "Primary Care"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-02-09T09:46:11.386+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732039",
+    "externalFacilityId": "732039",
+    "name": "Dindoshi Vasahat UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400065",
+    "address": "BMC COLONY, NEAR A/1 SWEETS, SANTOSH NAGAR, GOREGAON EAST, MUMBAI",
+    "latitude": 19.1733056,
+    "longitude": 72.8753314,
+    "location": {
+      "latitude": 19.1733056,
+      "longitude": 72.8753314
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:44:28.019+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701303",
+    "externalFacilityId": "701303",
+    "name": "DrAnandibai Joshi Maternity home UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400070",
+    "address": "Dr. Anandibai Joshi UPHC, Bail Bazar, Kurla-Andheri Road, Kurla West, Mumbai - 400070",
+    "latitude": 19.085319,
+    "longitude": 72.881062,
+    "location": {
+      "latitude": 19.085319,
+      "longitude": 72.881062
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-02T08:02:44.168+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701337",
+    "externalFacilityId": "701337",
+    "name": "Dr.Babasaheb Ambedkar Maternity Home UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400083",
+    "address": "New Post Office, Group No. 7, Tagore Nagar, Vikhroli East",
+    "latitude": 19.1120527,
+    "longitude": 72.9320262,
+    "location": {
+      "latitude": 19.1120527,
+      "longitude": 72.9320262
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "Obstetrics & Gynaecology",
+      "Paediatrics"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-30T07:26:38.286+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701321",
+    "externalFacilityId": "701321",
+    "name": "Dr. V.N. Shirodkar Maternity Home",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD,IPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400057",
+    "address": "dr.v.n.shirodkar maternity home, Paranjape scheme road B, Hanuman rd, vile parle eas, mumbai 400057, [object Object]",
+    "latitude": 19.11,
+    "longitude": 72.85,
+    "location": {
+      "latitude": 19.11,
+      "longitude": 72.85
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "Anaesthesia",
+      "Obstetrics & Gynaecology",
+      "Paediatrics",
+      "Neonatology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": true,
+        "openTime": "00:00",
+        "closeTime": "00:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-19T10:26:15.092+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "771910",
+    "externalFacilityId": "771910",
+    "name": "DURGA NAGAR HP",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "IPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400060",
+    "address": "Sanjay Gandhi Nagar Caves Rd Jogeshwari East, [object Object]",
+    "latitude": 19.137232237728554,
+    "longitude": 72.86213182632721,
+    "location": {
+      "latitude": 19.137232237728554,
+      "longitude": 72.86213182632721
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "Obstetrics & Gynaecology",
+      "Gastroenterology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-11-11T09:35:24.205+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  }
+]

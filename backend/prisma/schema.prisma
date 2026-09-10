@@ -1,0 +1,594 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  CITIZEN
+  FRONTLINE_WORKER
+  DOCTOR
+  FACILITY_ADMIN
+  DISTRICT_ADMIN
+  SUPER_ADMIN
+}
+
+enum Urgency {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum AppointmentStatus {
+  BOOKED
+  CHECKED_IN
+  CALLED
+  COMPLETED
+  CANCELLED
+  NO_SHOW
+}
+
+enum QueueStatus {
+  WAITING
+  CALLED
+  IN_CONSULTATION
+  COMPLETED
+  CANCELLED
+}
+
+enum ReferralStatus {
+  CREATED
+  SENT
+  ACCEPTED
+  REJECTED
+  APPOINTMENT_BOOKED
+  PATIENT_ARRIVED
+  CONSULTED
+  FOLLOWUP_CREATED
+  COMPLETED
+  CANCELLED
+}
+
+enum ReferralEventType {
+  CREATED
+  SENT
+  VIEWED
+  ACCEPTED
+  REJECTED
+  APPOINTMENT_BOOKED
+  PATIENT_ARRIVED
+  CONSULTED
+  FOLLOWUP_CREATED
+  COMPLETED
+  CANCELLED
+}
+
+enum FollowUpStatus {
+  PENDING
+  DUE
+  COMPLETED
+  MISSED
+  CANCELLED
+}
+
+enum ResourceStatus {
+  AVAILABLE
+  UNAVAILABLE
+  UNKNOWN
+}
+
+enum ConsentStatus {
+  REQUESTED
+  GRANTED
+  REVOKED
+  EXPIRED
+}
+
+enum DataQualityIssueType {
+  INVALID_TIME
+  MISSING_HOURS
+  MISSING_GEOLOCATION
+  UNKNOWN_RESOURCE
+  STALE_DATA
+  MISSING_SPECIALTY
+  INCONSISTENT_VALUE
+}
+
+enum IssueSeverity {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum DataQualityStatus {
+  OPEN
+  RESOLVED
+  IGNORED
+}
+
+enum SyncOperation {
+  CREATE
+  UPDATE
+  DELETE
+}
+
+enum SyncStatus {
+  PENDING
+  SYNCED
+  CONFLICT
+  FAILED
+}
+
+model User {
+  id                String         @id @default(uuid()) @db.Uuid
+  name              String
+  phone             String         @unique
+  email             String?
+  role              UserRole       @default(CITIZEN)
+  preferredLanguage String         @default("en")
+  demoUser          Boolean        @default(false)
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+
+  patient           Patient?
+  practitioner      Practitioner?
+  referralsCreated  Referral[]     @relation("ReferralCreatedBy")
+  consentRequests   ConsentRecord[] @relation("UserConsentRequests")
+  notifications     Notification[]
+}
+
+model Patient {
+  id              String         @id @default(uuid()) @db.Uuid
+  userId          String?        @unique @db.Uuid
+  user            User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  patientCode     String         @unique
+  firstName       String
+  lastName        String?
+  dateOfBirth     DateTime?
+  sex             String?
+  phone           String?
+  address         String?
+  pincode         String?
+  latitude        Float?
+  longitude       Float?
+  location        Unsupported("geography(Point,4326)")?
+  abhaReference   String?
+  emergencyName   String?
+  emergencyPhone  String?
+  demoData        Boolean        @default(false)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  encounters      Encounter[]
+  triageSessions  TriageSession[]
+  appointments    Appointment[]
+  referrals       Referral[]
+  followUps       FollowUp[]
+  consentRecords  ConsentRecord[]
+
+  @@index([patientCode])
+  @@index([pincode])
+}
+
+model Facility {
+  id                 String         @id @default(uuid()) @db.Uuid
+  externalFacilityId String         @unique
+  name               String
+  facilityType       String         @default("Primary Health Centre")
+  ownership          String?
+  ownerSubType       String?
+  systemOfMedicine   String?
+  serviceType        String?
+  serviceTypeOther   String?
+  pincode            String?
+  address            String?
+  latitude           Float?
+  longitude          Float?
+  location           Unsupported("geography(Point,4326)")?
+  operationalStatus  String?
+  sourceStatus       String?
+  emrEnabled         Boolean?       @default(false)
+  emrSoftware        String?
+  abdmEnabled        Boolean?       @default(false)
+  alternateId        String?
+  source             String         @default("HFR")
+  sourceLastUpdated  DateTime?
+  dataQualityScore   Int            @default(100)
+  demoData           Boolean        @default(false)
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
+
+  hours              FacilityHour[]
+  specialties        FacilitySpecialty[]
+  resources          FacilityResource?
+  practitioners      Practitioner[]
+  encounters         Encounter[]
+  appointments       Appointment[]
+  queueTokens        QueueToken[]
+  referralsFrom      Referral[]     @relation("SourceFacility")
+  referralsTo        Referral[]     @relation("DestinationFacility")
+  diagnostics        DiagnosticService[]
+  medicineStocks     FacilityMedicineStock[]
+  dataQualityIssues  DataQualityIssue[]
+  snapshots          FacilitySnapshot[]
+  demoCapabilities   FacilityDemoCapability[]
+
+  @@index([externalFacilityId])
+  @@index([pincode])
+  @@index([facilityType])
+  @@index([serviceType])
+  @@index([operationalStatus])
+  @@index([source])
+}
+
+model FacilityHour {
+  id          String   @id @default(uuid()) @db.Uuid
+  facilityId  String   @db.Uuid
+  facility    Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  weekday     Int
+  is24Hours   Boolean  @default(false)
+  openTime    String?
+  closeTime   String?
+  active      Boolean  @default(true)
+  sourceValue Json?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([facilityId, weekday])
+}
+
+model FacilitySpecialty {
+  id                  String   @id @default(uuid()) @db.Uuid
+  facilityId          String   @db.Uuid
+  facility            Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  externalSpecialtyId String?
+  name                String
+  active              Boolean  @default(true)
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+
+  @@index([name])
+}
+
+model FacilityResource {
+  id                String         @id @default(uuid()) @db.Uuid
+  facilityId        String         @unique @db.Uuid
+  facility          Facility       @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  totalBeds         Int?
+  ipdBeds           Int?
+  icuBeds           Int?
+  ventilators       Int?
+  diagnosticsStatus ResourceStatus @default(UNKNOWN)
+  imagingStatus     ResourceStatus @default(UNKNOWN)
+  pharmacyStatus    ResourceStatus @default(UNKNOWN)
+  bloodStatus       ResourceStatus @default(UNKNOWN)
+  dialysisStatus    ResourceStatus @default(UNKNOWN)
+  lastUpdated       DateTime?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+}
+
+model FacilityDemoCapability {
+  id            String   @id @default(uuid()) @db.Uuid
+  facilityId    String   @db.Uuid
+  facility      Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  specialty     String
+  service       String
+  queueCapacity Int      @default(50)
+  demoData      Boolean  @default(true)
+  createdAt     DateTime @default(now())
+}
+
+model Practitioner {
+  id            String        @id @default(uuid()) @db.Uuid
+  userId        String        @unique @db.Uuid
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  facilityId    String        @db.Uuid
+  facility      Facility      @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  designation   String?
+  specialty     String?
+  licenseNumber String?
+  active        Boolean       @default(true)
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+
+  encounters    Encounter[]
+  appointments  Appointment[]
+}
+
+model Encounter {
+  id             String         @id @default(uuid()) @db.Uuid
+  patientId      String         @db.Uuid
+  patient        Patient        @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  facilityId     String         @db.Uuid
+  facility       Facility       @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  practitionerId String?        @db.Uuid
+  practitioner   Practitioner?  @relation(fields: [practitionerId], references: [id], onDelete: SetNull)
+  type           String         @default("PRIMARY_CARE")
+  chiefComplaint String?
+  notes          String?
+  status         String         @default("COMPLETED")
+  startedAt      DateTime?
+  completedAt    DateTime?
+  demoData       Boolean        @default(false)
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  triageSession  TriageSession?
+  referrals      Referral[]
+  followUps      FollowUp[]
+}
+
+model TriageSession {
+  id                String    @id @default(uuid()) @db.Uuid
+  patientId         String    @db.Uuid
+  patient           Patient   @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  encounterId       String    @unique @db.Uuid
+  encounter         Encounter @relation(fields: [encounterId], references: [id], onDelete: Cascade)
+  symptoms          Json
+  vitals            Json
+  riskFlags         Json
+  urgency           Urgency   @default(LOW)
+  recommendedAction String?
+  engineVersion     String    @default("1.0")
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+}
+
+model Appointment {
+  id              String            @id @default(uuid()) @db.Uuid
+  patientId       String            @db.Uuid
+  patient         Patient           @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  facilityId      String            @db.Uuid
+  facility        Facility          @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  practitionerId  String?           @db.Uuid
+  practitioner    Practitioner?     @relation(fields: [practitionerId], references: [id], onDelete: SetNull)
+  appointmentDate DateTime
+  startTime       String
+  endTime         String
+  tokenNumber     String?
+  status          AppointmentStatus @default(BOOKED)
+  source          String            @default("CITIZEN")
+  demoData        Boolean           @default(false)
+  createdAt       DateTime          @default(now())
+  updatedAt       DateTime          @updatedAt
+
+  queueToken      QueueToken?
+
+  @@index([facilityId])
+  @@index([appointmentDate])
+}
+
+model QueueToken {
+  id                   String      @id @default(uuid()) @db.Uuid
+  facilityId           String      @db.Uuid
+  facility             Facility    @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  appointmentId        String      @unique @db.Uuid
+  appointment          Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
+  department           String      @default("OPD")
+  tokenNumber          String
+  priority             Urgency     @default(LOW)
+  status               QueueStatus @default(WAITING)
+  estimatedWaitMinutes Int?
+  calledAt             DateTime?
+  completedAt          DateTime?
+  createdAt            DateTime    @default(now())
+  updatedAt            DateTime    @updatedAt
+}
+
+model Referral {
+  id                    String         @id @default(uuid()) @db.Uuid
+  patientId             String         @db.Uuid
+  patient               Patient        @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  encounterId           String?        @db.Uuid
+  encounter             Encounter?     @relation(fields: [encounterId], references: [id], onDelete: SetNull)
+  sourceFacilityId      String         @db.Uuid
+  sourceFacility        Facility       @relation("SourceFacility", fields: [sourceFacilityId], references: [id], onDelete: Cascade)
+  destinationFacilityId String         @db.Uuid
+  destinationFacility   Facility       @relation("DestinationFacility", fields: [destinationFacilityId], references: [id], onDelete: Cascade)
+  createdById           String         @db.Uuid
+  createdBy             User           @relation("ReferralCreatedBy", fields: [createdById], references: [id], onDelete: Cascade)
+  reason                String
+  urgency               Urgency        @default(MEDIUM)
+  status                ReferralStatus @default(CREATED)
+  appointmentId         String?        @db.Uuid
+  acceptedAt            DateTime?
+  completedAt           DateTime?
+  demoData              Boolean        @default(false)
+  createdAt             DateTime       @default(now())
+  updatedAt             DateTime       @updatedAt
+
+  events                ReferralEvent[]
+
+  @@index([patientId])
+  @@index([sourceFacilityId])
+  @@index([destinationFacilityId])
+  @@index([status])
+}
+
+model ReferralEvent {
+  id          String            @id @default(uuid()) @db.Uuid
+  referralId  String            @db.Uuid
+  referral    Referral          @relation(fields: [referralId], references: [id], onDelete: Cascade)
+  eventType   ReferralEventType
+  performedBy String?
+  metadata    Json?
+  createdAt   DateTime          @default(now())
+
+  @@index([referralId])
+}
+
+model FollowUp {
+  id          String         @id @default(uuid()) @db.Uuid
+  patientId   String         @db.Uuid
+  patient     Patient        @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  encounterId String?        @db.Uuid
+  encounter   Encounter?     @relation(fields: [encounterId], references: [id], onDelete: SetNull)
+  type        String
+  dueDate     DateTime
+  status      FollowUpStatus @default(PENDING)
+  assignedTo  String?
+  notes       String?
+  completedAt DateTime?
+  demoData    Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@index([patientId])
+  @@index([dueDate])
+}
+
+model DiagnosticService {
+  id          String         @id @default(uuid()) @db.Uuid
+  facilityId  String         @db.Uuid
+  facility    Facility       @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  name        String
+  category    String?
+  status      ResourceStatus @default(AVAILABLE)
+  lastUpdated DateTime?
+  demoData    Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+}
+
+model Medicine {
+  id          String                  @id @default(uuid()) @db.Uuid
+  genericName String
+  brandName   String?
+  strength    String?
+  dosageForm  String?
+  createdAt   DateTime                @default(now())
+  updatedAt   DateTime                @updatedAt
+
+  stocks      FacilityMedicineStock[]
+}
+
+model FacilityMedicineStock {
+  id          String         @id @default(uuid()) @db.Uuid
+  facilityId  String         @db.Uuid
+  facility    Facility       @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  medicineId  String         @db.Uuid
+  medicine    Medicine       @relation(fields: [medicineId], references: [id], onDelete: Cascade)
+  quantity    Int?
+  status      ResourceStatus @default(AVAILABLE)
+  lastUpdated DateTime       @default(now())
+  demoData    Boolean        @default(false)
+  createdAt   DateTime       @default(now())
+  updatedAt   DateTime       @updatedAt
+
+  @@unique([facilityId, medicineId])
+}
+
+model ConsentRecord {
+  id               String        @id @default(uuid()) @db.Uuid
+  patientId        String        @db.Uuid
+  patient          Patient       @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  requestingUserId String        @db.Uuid
+  requestingUser   User          @relation("UserConsentRequests", fields: [requestingUserId], references: [id], onDelete: Cascade)
+  purpose          String
+  scope            Json
+  status           ConsentStatus @default(REQUESTED)
+  grantedAt        DateTime?
+  expiresAt        DateTime?
+  revokedAt        DateTime?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+}
+
+model Notification {
+  id        String    @id @default(uuid()) @db.Uuid
+  userId    String    @db.Uuid
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  body      String
+  type      String
+  data      Json?
+  readAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  @@index([userId])
+}
+
+model DataQualityIssue {
+  id          String               @id @default(uuid()) @db.Uuid
+  facilityId  String?              @db.Uuid
+  facility    Facility?            @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  issueType   DataQualityIssueType
+  severity    IssueSeverity
+  fieldName   String?
+  sourceValue String?
+  description String
+  status      DataQualityStatus    @default(OPEN)
+  resolvedAt  DateTime?
+  createdAt   DateTime             @default(now())
+  updatedAt   DateTime             @updatedAt
+
+  @@index([status])
+  @@index([issueType])
+}
+
+model FacilitySnapshot {
+  id          String     @id @default(uuid()) @db.Uuid
+  facilityId  String     @db.Uuid
+  facility    Facility   @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  importRunId String?    @db.Uuid
+  importRun   ImportRun? @relation(fields: [importRunId], references: [id], onDelete: SetNull)
+  snapshot    Json
+  source      String     @default("HFR")
+  capturedAt  DateTime   @default(now())
+}
+
+model SyncEvent {
+  id              String        @id @default(uuid()) @db.Uuid
+  clientId        String
+  operationId     String        @unique
+  entityType      String
+  entityId        String?
+  operation       SyncOperation
+  payload         Json
+  status          SyncStatus    @default(PENDING)
+  errorMessage    String?
+  clientCreatedAt DateTime
+  serverCreatedAt DateTime      @default(now())
+
+  @@index([clientId])
+  @@index([status])
+}
+
+model AuditLog {
+  id         String   @id @default(uuid()) @db.Uuid
+  actorId    String?  @db.Uuid
+  action     String
+  entityType String
+  entityId   String?
+  metadata   Json?
+  ipAddress  String?
+  userAgent  String?
+  createdAt  DateTime @default(now())
+}
+
+model DemoScenario {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  version   String
+  data      Json?
+  createdAt DateTime @default(now())
+}
+
+model ImportRun {
+  id           String             @id @default(uuid()) @db.Uuid
+  sourceName   String
+  checksum     String
+  recordCount  Int
+  status       String
+  errorMessage String?
+  startedAt    DateTime           @default(now())
+  completedAt  DateTime?
+
+  snapshots    FacilitySnapshot[]
+}
