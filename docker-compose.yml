@@ -42,11 +42,11 @@ services:
       REDIS_URL: redis://redis:6379
       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:-mahaswasthya_jwt_access_secret_dev_key_2026_super_secure!}
       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-mahaswasthya_jwt_refresh_secret_dev_key_2026_super_secure!}
-      CORS_ORIGIN: http://localhost:3000
-      OTP_MODE: MOCK
-      MOCK_OTP: 123456
-      DEMO_MODE: "true"
-      LOG_LEVEL: info
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:3000}
+      OTP_MODE: ${OTP_MODE:-MOCK}
+      MOCK_OTP: ${MOCK_OTP:-123456}
+      DEMO_MODE: ${DEMO_MODE:-true}
+      LOG_LEVEL: ${LOG_LEVEL:-info}
     ports:
       - "4000:4000"
     depends_on:
@@ -86,17 +86,17 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        NEXT_PUBLIC_API_BASE_URL: http://localhost:4000/api/v1
-        NEXT_PUBLIC_APP_NAME: SwasthyaSetu
-        NEXT_PUBLIC_DEMO_MODE: "true"
+        NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:4000/api/v1}
+        NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-SwasthyaSetu}
+        NEXT_PUBLIC_DEMO_MODE: ${NEXT_PUBLIC_DEMO_MODE:-true}
     container_name: mahaswasthya_frontend
     restart: unless-stopped
     environment:
       NODE_ENV: production
       PORT: 3000
-      NEXT_PUBLIC_API_BASE_URL: http://localhost:4000/api/v1
-      NEXT_PUBLIC_APP_NAME: SwasthyaSetu
-      NEXT_PUBLIC_DEMO_MODE: "true"
+      NEXT_PUBLIC_API_BASE_URL: ${NEXT_PUBLIC_API_BASE_URL:-http://localhost:4000/api/v1}
+      NEXT_PUBLIC_APP_NAME: ${NEXT_PUBLIC_APP_NAME:-SwasthyaSetu}
+      NEXT_PUBLIC_DEMO_MODE: ${NEXT_PUBLIC_DEMO_MODE:-true}
     ports:
       - "3000:3000"
     depends_on:
