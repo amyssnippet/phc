@@ -1,5 +1,13 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || 'http://localhost:4000/api/v1';
+function normalizeBaseUrl(url?: string): string {
+  if (!url) return 'http://localhost:4000/api/v1';
+  const trimmed = url.replace(/\/+$/, '');
+  if (!trimmed.endsWith('/api/v1')) {
+    return `${trimmed}/api/v1`;
+  }
+  return trimmed;
+}
+
+const API_BASE_URL = normalizeBaseUrl(process.env.NEXT_PUBLIC_API_BASE_URL);
 
 export interface ApiResponse<T = any> {
   success: boolean;

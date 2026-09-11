@@ -64,6 +64,8 @@ npx cap sync android
 ```bash
 # Build the APK without requiring local Android Studio/SDK on host:
 docker run --rm \
+  --dns 8.8.8.8 \
+  -v ~/.gradle:/root/.gradle \
   -v $(pwd)/frontend:/app \
   -w /app/android \
   swasthyasetu-android-builder:latest \
