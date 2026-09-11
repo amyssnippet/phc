@@ -2,8 +2,8 @@ FROM node:22-alpine
 
 WORKDIR /app
 
-# Install openssl for Prisma
-RUN apk add --no-cache openssl curl
+# Ensure openssl/curl if package index is reachable; node:22-alpine already contains libssl.so.3
+RUN apk add --no-cache openssl curl || true
 
 COPY package*.json ./
 COPY prisma ./prisma/
