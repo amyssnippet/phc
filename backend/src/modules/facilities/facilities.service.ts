@@ -300,7 +300,7 @@ export class FacilityService {
         facilityId,
         createdAt: { gte: today, lt: tomorrow },
       },
-      orderBy: { tokenNumber: 'asc' },
+      orderBy: { tokenSequence: 'asc' },
     });
 
     const waiting = tokens.filter((t) => t.status === 'WAITING');
@@ -311,7 +311,7 @@ export class FacilityService {
       facilityId,
       totalTokensToday: tokens.length,
       waitingCount: waiting.length,
-      currentCalled: called ? { id: called.id, tokenNumber: called.tokenNumber, department: called.department } : null,
+      currentCalled: called ? { id: called.id, tokenNumber: called.displayNumber, department: called.department } : null,
       completedCount: completed.length,
       averageEstimatedWaitMinutes: waiting.length * 8,
       tokens: tokens.slice(0, 20),
@@ -326,3 +326,5 @@ export class FacilityService {
 }
 
 export const facilityService = new FacilityService();
+export const facilitiesService = facilityService;
+

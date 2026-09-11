@@ -1,7 +1,7 @@
 {
-  "name": "mahaswasthya-backend",
+  "name": "swasthyasetu-backend",
   "version": "1.0.0",
-  "description": "MahaSwasthya Grid - Backend API & Coordination Engine",
+  "description": "SwasthyaSetu - Backend API & Coordination Engine",
   "main": "dist/server.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",

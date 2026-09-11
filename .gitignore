@@ -8,8 +8,11 @@ build/
 .env.*.local
 coverage/
 .prisma/
-android/
-ios/
+.gradle/
 .DS_Store
 *.tsbuildinfo
 postgres_data/
+
+out/
+frontend/out/
+*.js.map

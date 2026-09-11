@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { sendSuccess } from '../../utils/response.js';
 import { authService } from './auth.service.js';
-import { sendOtpSchema, verifyOtpSchema } from './auth.schema.js';
+import { sendOtpSchema, verifyOtpSchema, demoLoginSchema } from './auth.schema.js';
 
 export async function sendOtp(req: Request, res: Response, next: NextFunction) {
   try {
@@ -17,6 +17,16 @@ export async function verifyOtp(req: Request, res: Response, next: NextFunction)
   try {
     const input = verifyOtpSchema.parse(req.body);
     const result = await authService.verifyOtp(input);
+    return sendSuccess(res, result);
+  } catch (err) {
+    return next(err);
+  }
+}
+
+export async function demoLogin(req: Request, res: Response, next: NextFunction) {
+  try {
+    const input = demoLoginSchema.parse(req.body);
+    const result = await authService.demoLogin(input);
     return sendSuccess(res, result);
   } catch (err) {
     return next(err);

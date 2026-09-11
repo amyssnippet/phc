@@ -1,5 +1,2764 @@
 [
   {
+    "id": "732062",
+    "externalFacilityId": "732062",
+    "name": "Ajgaonkar Plot UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400060",
+    "address": "Near HBT hospital western express highway Jogeshwari east",
+    "latitude": 19.1416756,
+    "longitude": 72.854237,
+    "location": {
+      "latitude": 19.1416756,
+      "longitude": 72.854237
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:53",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:47:12.317+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701352",
+    "externalFacilityId": "701352",
+    "name": "Akurli Road MH UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400101",
+    "address": "Akurli Maternity Home opp N.G. Suncity thakur village kandivali east",
+    "latitude": 19.207708,
+    "longitude": 72.876972,
+    "location": {
+      "latitude": 19.207708,
+      "longitude": 72.876972
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-09T10:11:47.186+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "634207",
+    "externalFacilityId": "634207",
+    "name": "Ali Yavar Jung National Institute of Speech and Hearing Disabilities",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400050",
+    "address": "AYJNISHD(D), K.C. Marg, Bandra Reclamation, Bandra(W), Mumbai, [object Object]",
+    "latitude": 19.05173073235669,
+    "longitude": 72.83562177546116,
+    "location": {
+      "latitude": 19.05173073235669,
+      "longitude": 72.83562177546116
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "Speech and Hearing Disabilities"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:30",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:30",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:30",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:30",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:30",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-09-09T10:54:50.668+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701312",
+    "externalFacilityId": "701312",
+    "name": "Amar Nagar Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400070",
+    "address": "2ND FLOOR CHRISTIAN VILLAGE DISPENSARY , AHEAD OF CITY HOSPITAL , CHIRSTIAN VILLAGE , KURLA WEST",
+    "latitude": 19.081564232568606,
+    "longitude": 72.88303245698033,
+    "location": {
+      "latitude": 19.081564232568606,
+      "longitude": 72.88303245698033
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-24T06:15:19.325+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732057",
+    "externalFacilityId": "732057",
+    "name": "Ambujwadi UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400095",
+    "address": "OPPOSITE KHUSHBOO COMMUNITY HALL, MALVANI MHADA MALAD WEST",
+    "latitude": 19.17698,
+    "longitude": 72.81241,
+    "location": {
+      "latitude": 19.17698,
+      "longitude": 72.81241
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:46:26.583+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "709608",
+    "externalFacilityId": "709608",
+    "name": "Anand Nagar Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400053",
+    "address": "At Samarth Aishwarya, Urban Health Training Centre, Lokhandwala, Andheri West.",
+    "latitude": 19.1451459,
+    "longitude": 72.8244539,
+    "location": {
+      "latitude": 19.1451459,
+      "longitude": 72.8244539
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-04-24T07:30:38.502+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701305",
+    "externalFacilityId": "701305",
+    "name": "Anand Nagar UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400068",
+    "address": "SAMAJ KALYAN HALL NO-3, NEAR DIAMOND INDUSTEY,DAHISAR CHECK NAKA,DAHISAR EAST",
+    "latitude": 19.255908,
+    "longitude": 72.872924,
+    "location": {
+      "latitude": 19.255908,
+      "longitude": 72.872924
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-02T09:56:50.346+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "754773",
+    "externalFacilityId": "754773",
+    "name": "Appapada Health post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400097",
+    "address": "shivshree chawl parthamesh nagar, [object Object]",
+    "latitude": 19.1902230000001,
+    "longitude": 72.8724800000001,
+    "location": {
+      "latitude": 19.1902230000001,
+      "longitude": 72.8724800000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-24T06:15:44.548+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701292",
+    "externalFacilityId": "701292",
+    "name": "Asalfa Village UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400072",
+    "address": "Asalfa Dawakhana, near holiday inn hotel, Jagannath mandir road, Sakinaka Mumbai 400072",
+    "latitude": 19.1020315,
+    "longitude": 72.8871587,
+    "location": {
+      "latitude": 19.1020315,
+      "longitude": 72.8871587
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-29T09:10:46.953+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732025",
+    "externalFacilityId": "732025",
+    "name": "Ashokvan UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400068",
+    "address": "Ashokvan HP Rawalpada maternity Home Near Krishna Car Care Center Behind D Mart Rawalpada Dahisar Ea",
+    "latitude": 19.245236,
+    "longitude": 72.86724,
+    "location": {
+      "latitude": 19.245236,
+      "longitude": 72.86724
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-08-12T09:09:32.865+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701298",
+    "externalFacilityId": "701298",
+    "name": "Ayodhya Nagar 2 UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400074",
+    "address": "1 st floor suraksha bld no 4 vashi naka chembur mumbai 400074",
+    "latitude": 19.0312939,
+    "longitude": 72.8997001,
+    "location": {
+      "latitude": 19.0312939,
+      "longitude": 72.8997001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-29T09:10:41.505+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701359",
+    "externalFacilityId": "701359",
+    "name": "Ayodhya Nagar UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400074",
+    "address": "opposite chembur welfare school shivaji nagar chembur mumbai 40074",
+    "latitude": 19.034072,
+    "longitude": 72.9013320000001,
+    "location": {
+      "latitude": 19.034072,
+      "longitude": 72.9013320000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-15T11:50:48.089+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "811832",
+    "externalFacilityId": "811832",
+    "name": "BABA AMTE DISPENSARY",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400068",
+    "address": "NEW PRABHAT GROUND FLR. 297 LAST BUS STOP KOKANIPADA DAHISAR EAST, [object Object]",
+    "latitude": 19.24613262785026,
+    "longitude": 72.87215809325738,
+    "location": {
+      "latitude": 19.24613262785026,
+      "longitude": 72.87215809325738
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": true,
+    "specialties": [
+      "Gastroenterology",
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-07T11:56:05.040+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "613701",
+    "externalFacilityId": "613701",
+    "name": "Babrekar Nagar UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "Babrekar Nagar BMC Hospital ,Nilkanth nagar , Kandivali West, [object Object]",
+    "latitude": 19.204126,
+    "longitude": 72.8247660000001,
+    "location": {
+      "latitude": 19.204126,
+      "longitude": 72.8247660000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": true,
+    "specialties": [
+      "General Medicine",
+      "Swasthavritta and Yoga (Preventive and Social Medicine & Yoga)"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-05T06:47:30.621+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701353",
+    "externalFacilityId": "701353",
+    "name": "Baiganwadi Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400043",
+    "address": "Baiganwadi Arogya kendra Opp shivaji nagar school no 2 ,Bedside Ambedkar Garden,Baiganwadi,Govandi",
+    "latitude": 19.060648,
+    "longitude": 72.923274,
+    "location": {
+      "latitude": 19.060648,
+      "longitude": 72.923274
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-06-02T16:59:25.393+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "754714",
+    "externalFacilityId": "754714",
+    "name": "Baiganwadi Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400043",
+    "address": "Opp.Bmc School No.2, Raman Mama Nagar  BAIGANWADI GOVANDI MUMBAI",
+    "latitude": 19.060487209293697,
+    "longitude": 72.9236634964281,
+    "location": {
+      "latitude": 19.060487209293697,
+      "longitude": 72.9236634964281
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-07-28T06:52:19.857+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "810020",
+    "externalFacilityId": "810020",
+    "name": "Bail bazar uphc ",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400070",
+    "address": "Dr. Anandibai Joshi UPHC, Bail Bazar, Kurla-Andheri Road, Kurla West, Mumbai - 400070",
+    "latitude": 19.085817685718638,
+    "longitude": 72.88111966072006,
+    "location": {
+      "latitude": 19.085817685718638,
+      "longitude": 72.88111966072006
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-23T07:37:03.453+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "756997",
+    "externalFacilityId": "756997",
+    "name": "Bananaleaf UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400053",
+    "address": "Bananaleaf UPHC, Bharat Nagar, Juhu versova link rd andheri west, [object Object]",
+    "latitude": 19.1240700000001,
+    "longitude": 72.831174,
+    "location": {
+      "latitude": 19.1240700000001,
+      "longitude": 72.831174
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "Gastroenterology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-10T09:56:32.106+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732044",
+    "externalFacilityId": "732044",
+    "name": "Bandra Babha UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400050",
+    "address": "K B Bhabha Hospital premises, R K Patkar Marg , Bandra West, Mumbai 400050",
+    "latitude": 19.057437,
+    "longitude": 72.8335210000001,
+    "location": {
+      "latitude": 19.057437,
+      "longitude": 72.8335210000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:49",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-08-13T09:41:22.386+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "771309",
+    "externalFacilityId": "771309",
+    "name": "Behrampada UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400051",
+    "address": "Behind Ram Mandir, Kherwadi, Bandra (E), Mumbai, [object Object]",
+    "latitude": 19.0582000000001,
+    "longitude": 72.855264,
+    "location": {
+      "latitude": 19.0582000000001,
+      "longitude": 72.855264
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": false,
+    "specialties": [
+      "Paediatrics"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-09-18T12:10:04.945+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732055",
+    "externalFacilityId": "732055",
+    "name": "Behram Pada UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400051",
+    "address": "Anata Kanekar Marg, Near Bandra Court, Opp to Bandra Station, Bandra East",
+    "latitude": 19.054386664082998,
+    "longitude": 72.84247840738206,
+    "location": {
+      "latitude": 19.054386664082998,
+      "longitude": 72.84247840738206
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:47",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-08-08T18:44:53.625+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "756897",
+    "externalFacilityId": "756897",
+    "name": "Bhaglipada Health Post ",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "Bhaglipada HP, Citamani building near Ashish Complex, Dahisar East , [object Object]",
+    "latitude": 19.2548545843014,
+    "longitude": 72.85718914637258,
+    "location": {
+      "latitude": 19.2548545843014,
+      "longitude": 72.85718914637258
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-07-29T06:57:55.773+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701332",
+    "externalFacilityId": "701332",
+    "name": "Bharat Nagar 2 Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400051",
+    "address": "Pattar Nagar, Bharatnagar Opp. Pattar Nagar Bus Stop , Bandra East",
+    "latitude": 19.063750840980543,
+    "longitude": 72.8556348604022,
+    "location": {
+      "latitude": 19.063750840980543,
+      "longitude": 72.8556348604022
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-06-24T06:10:27.202+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732035",
+    "externalFacilityId": "732035",
+    "name": "Bhardawadi UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400102",
+    "address": "Parvati Tower Kewanipada Jogeshwari West Mumbai",
+    "latitude": 19.12999,
+    "longitude": 72.8452,
+    "location": {
+      "latitude": 19.12999,
+      "longitude": 72.8452
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:58",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:44:15.676+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701307",
+    "externalFacilityId": "701307",
+    "name": "Borsapada Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400092",
+    "address": "SHIV GANESH SRA BLDG GROUND FLOR OPP AANADA RESIDENCY BORIVALI WEST",
+    "latitude": 19.225141,
+    "longitude": 72.8406309,
+    "location": {
+      "latitude": 19.225141,
+      "longitude": 72.8406309
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-06-02T16:59:25.130+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701335",
+    "externalFacilityId": "701335",
+    "name": "Buddha Colony UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400070",
+    "address": "AL- Shams apartment, BMC building, 2nd floor, Hall road, near kartika school, kurla West, Mumbai -70",
+    "latitude": 19.067866,
+    "longitude": 72.879107,
+    "location": {
+      "latitude": 19.067866,
+      "longitude": 72.879107
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-10T10:58:06.300+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732037",
+    "externalFacilityId": "732037",
+    "name": "Centenary Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400088",
+    "address": "centenary Hospitl,Premises, groung floor, vaman Tukaram Patil marg, Near D mart, Govandi.",
+    "latitude": 19.0492161,
+    "longitude": 72.911304,
+    "location": {
+      "latitude": 19.0492161,
+      "longitude": 72.911304
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-07-23T11:01:39.782+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "756115",
+    "externalFacilityId": "756115",
+    "name": "Centenary Health Post R/S",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "DAY,OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "Bdba hospital basement near MRO department, S.V. Road, Kandivali West , [object Object]",
+    "latitude": 19.2084140000001,
+    "longitude": 72.8514920000001,
+    "location": {
+      "latitude": 19.2084140000001,
+      "longitude": 72.8514920000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": false,
+    "specialties": [
+      "Paediatrics",
+      "General Medicine",
+      "Obstetrics & Gynaecology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-07-28T06:32:32.541+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "761209",
+    "externalFacilityId": "761209",
+    "name": "Chandivali UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400072",
+    "address": "Chandivali Health Post, 1st Floor, Opposite Boomerang Building, Tunga Gaon, Chandivali- 400072",
+    "latitude": 19.116029417741714,
+    "longitude": 72.89286682290808,
+    "location": {
+      "latitude": 19.116029417741714,
+      "longitude": 72.89286682290808
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [
+      "Paediatrics",
+      "Obstetrics & Gynaecology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-15T11:39:19.540+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701351",
+    "externalFacilityId": "701351",
+    "name": "Charkop Gaon UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "near Rustomjee tower Charkop gaon kandivali west",
+    "latitude": 19.206284,
+    "longitude": 72.817558,
+    "location": {
+      "latitude": 19.206284,
+      "longitude": 72.817558
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-06-02T17:08:07.338+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701290",
+    "externalFacilityId": "701290",
+    "name": "Charkop Maternity Home",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "Near apnabazar opp. 511 soc, sector 5 charkop Kandivali west",
+    "latitude": 19.218472,
+    "longitude": 72.8277889,
+    "location": {
+      "latitude": 19.218472,
+      "longitude": 72.8277889
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-31T04:15:16.950+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "756524",
+    "externalFacilityId": "756524",
+    "name": "CHARKOP NO 1A HP",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "BEHIND SYMPHONY TOWER, NEAR DAHANUKARWADI METRO STATION, NEW LINK ROAD, [object Object]",
+    "latitude": 19.213535,
+    "longitude": 72.825001,
+    "location": {
+      "latitude": 19.213535,
+      "longitude": 72.825001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": false,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-07-29T07:01:59.242+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701325",
+    "externalFacilityId": "701325",
+    "name": "Charkop Sec 1 UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400067",
+    "address": "charkop sec-1 Near BMC School charkop kandivali west",
+    "latitude": 19.211877,
+    "longitude": 72.826425,
+    "location": {
+      "latitude": 19.211877,
+      "longitude": 72.826425
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-06-01T12:02:17.840+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "673636",
+    "externalFacilityId": "673636",
+    "name": "Cheeta Camp 2 Health Post",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400088",
+    "address": "V.N.Purav Marga, near cheeta camp maternity home , cheeta camp ,mankhurd, mumbai 400088, [object Object]",
+    "latitude": 19.03725615801976,
+    "longitude": 72.94596752646021,
+    "location": {
+      "latitude": 19.03725615801976,
+      "longitude": 72.94596752646021
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "Obstetrics & Gynaecology"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-03-27T09:56:43.316+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701313",
+    "externalFacilityId": "701313",
+    "name": "Chembur Colony UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400074",
+    "address": "NEAR VASVANI BOOK DEPO, C.G. GIDWANI ROAD, CHEMBUR CAMP",
+    "latitude": 19.045393,
+    "longitude": 72.895697,
+    "location": {
+      "latitude": 19.045393,
+      "longitude": 72.895697
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-29T13:53:32.360+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "732015",
+    "externalFacilityId": "732015",
+    "name": "Chincholi UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400104",
+    "address": "Chincholi healthpost, 9-10 shree ram Samarth bldg, premnagar, unnat nagar road no 1,goregaon west, Mumbai-400104",
+    "latitude": 19.1682541,
+    "longitude": 72.8420756,
+    "location": {
+      "latitude": 19.1682541,
+      "longitude": 72.8420756
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "17:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": null,
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-05-27T06:42:58.001+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701293",
+    "externalFacilityId": "701293",
+    "name": "Choksey Maternity Home",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400064",
+    "address": "Opp. Nutan High School, Marve Road, Malad (W), Mumbai",
+    "latitude": 19.192646,
+    "longitude": 72.848944,
+    "location": {
+      "latitude": 19.192646,
+      "longitude": 72.848944
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-01-09T08:58:33.900+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701330",
+    "externalFacilityId": "701330",
+    "name": "CHOKSY UPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400064",
+    "address": "Marve Road, In Front of Nutan High School , Malad West  , Mumbai",
+    "latitude": 19.191512040629462,
+    "longitude": 72.84444286003333,
+    "location": {
+      "latitude": 19.191512040629462,
+      "longitude": 72.84444286003333
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": true,
+    "abdmEnabled": false,
+    "specialties": [
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-12-22T08:48:17.369+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "783950",
+    "externalFacilityId": "783950",
+    "name": "Damupada 1 HP ",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400101",
+    "address": "damupada 1 hp akurli mat home near n g suncity opp oxford school kandivali east, [object Object]",
+    "latitude": 19.2078300000001,
+    "longitude": 72.8699130000001,
+    "location": {
+      "latitude": 19.2078300000001,
+      "longitude": 72.8699130000001
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": false,
+    "specialties": [
+      "Obstetrics & Gynaecology",
+      "Paediatrics",
+      "General Medicine"
+    ],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "20:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2025-11-19T07:29:48.872+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
+    "id": "701319",
+    "externalFacilityId": "701319",
+    "name": "Damu PadaUPHC",
+    "facilityType": "Primary Health Centre",
+    "serviceType": "OPD",
+    "ownership": "GOVERNMENT",
+    "pincode": "400101",
+    "address": "Akurli maternity home near oxford school opp n g suncity thakur village Kandivali East",
+    "latitude": 19.206893,
+    "longitude": 72.877034,
+    "location": {
+      "latitude": 19.206893,
+      "longitude": 72.877034
+    },
+    "operationalStatus": "FUNCTIONAL",
+    "emrEnabled": false,
+    "abdmEnabled": true,
+    "specialties": [],
+    "hours": [
+      {
+        "day": "MON",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "TUE",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "WED",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "THU",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "FRI",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      },
+      {
+        "day": "SAT",
+        "is24Hours": false,
+        "openTime": "09:00",
+        "closeTime": "16:00",
+        "active": true
+      }
+    ],
+    "source": "HFR",
+    "sourceLastUpdated": "2026-09-10T06:42:50.649+00:00",
+    "dataQualityScore": 100,
+    "isPublicCatalogue": true
+  },
+  {
     "id": "732059",
     "externalFacilityId": "732059",
     "name": "DDU2 RCH UPHC",

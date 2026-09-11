@@ -15,7 +15,7 @@ export interface ApiResponse<T = any> {
 class ApiClient {
   private getToken(): string | null {
     if (typeof window === 'undefined') return null;
-    return localStorage.getItem('mahaswasthya_token');
+    return localStorage.getItem('swasthyasetu_token') || localStorage.getItem('mahaswasthya_token');
   }
 
   private async request<T>(

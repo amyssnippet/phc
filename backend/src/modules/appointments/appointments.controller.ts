@@ -22,7 +22,7 @@ export async function listAppointments(req: Request, res: Response, next: NextFu
 export async function createAppointment(req: Request, res: Response, next: NextFunction) {
   try {
     const input = createAppointmentSchema.parse(req.body);
-    const result = await appointmentService.createAppointment(input, req.user?.id);
+    const result = await appointmentService.createAppointment(input, req.auth);
     await recordAudit(req, 'BOOK_APPOINTMENT', 'APPOINTMENT', result.id, { token: result.tokenNumber });
     return sendSuccess(res, result, undefined, 201);
   } catch (err) {
@@ -62,7 +62,7 @@ export async function checkIn(req: Request, res: Response, next: NextFunction) {
 
 export async function cancelAppointment(req: Request, res: Response, next: NextFunction) {
   try {
-    const result = await appointmentService.cancelAppointment(getParam(req, 'id'));
+    const result = await appointmentService.cancelAppointment(getParam(req, 'id'), req.auth);
     await recordAudit(req, 'CANCEL_APPOINTMENT', 'APPOINTMENT', result.id);
     return sendSuccess(res, result);
   } catch (err) {

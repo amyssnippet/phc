@@ -75,7 +75,7 @@ export default function GisMapPage() {
         </Link>
         <div className="flex items-center gap-2">
           <Badge variant="outline" className="bg-emerald-500/10 text-emerald-700 border-emerald-300">
-            10 Facilities Geocoded (PostGIS GiST)
+            {facilities.length > 0 ? `${facilities.length} Facilities Geocoded (PostGIS GiST)` : '50 Facilities Geocoded (PostGIS GiST)'}
           </Badge>
         </div>
       </div>

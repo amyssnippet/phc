@@ -2,7 +2,7 @@ export type Language = 'en' | 'hi' | 'mr';
 
 export const translations: Record<Language, Record<string, string>> = {
   en: {
-    appName: 'MahaSwasthya Grid',
+    appName: 'SwasthyaSetu',
     tagline: 'Public Healthcare Access & Continuity Network',
     findCare: 'Find Care Near Me',
     bookToken: 'Book a Token',
@@ -35,7 +35,7 @@ export const translations: Record<Language, Record<string, string>> = {
     mumbaiSuburban: 'District: Mumbai Suburban',
   },
   mr: {
-    appName: 'महास्वास्थ्य ग्रिड',
+    appName: 'स्वास्थ्यसेतु',
     tagline: 'सार्वजनिक आरोग्य सेवा सुलभता व अखंडता नेटवर्क',
     findCare: 'माझ्याजवळचे आरोग्य केंद्र शोधा',
     bookToken: 'टोकन बुक करा',
@@ -58,17 +58,17 @@ export const translations: Record<Language, Record<string, string>> = {
     online: 'नेटवर्कशी जोडलेले',
     syncNow: 'आता सिंक करा',
     pendingChanges: 'बदल बाकी',
-    triage: 'प्राथमिक ट्रायज',
+    triage: 'प्राथमिक ट्राइएज तपासणी',
     createReferral: 'रेफरल पाठवा',
     acceptReferral: 'रेफरल स्वीकारा',
-    queue: 'ओपीडी रांग',
+    queue: 'ओपीडी थेट रांग',
     estimatedWait: 'अंदाजे वेळ',
     whyRecommended: 'शिफारस का केली?',
     disclaimer: 'केवळ निर्णय साहाय्यासाठी. हा वैद्यकीय निदान नाही.',
     mumbaiSuburban: 'जिल्हा: मुंबई उपनगर',
   },
   hi: {
-    appName: 'महास्वास्थ्य ग्रिड',
+    appName: 'स्वास्थ्यसेतु',
     tagline: 'सार्वजनिक स्वास्थ्य सेवा पहुंच एवं निरंतरता नेटवर्क',
     findCare: 'नजदीकी स्वास्थ्य केंद्र खोजें',
     bookToken: 'टोकन बुक करें',

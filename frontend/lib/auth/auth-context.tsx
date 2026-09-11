@@ -1,15 +1,18 @@
 'use client';
 
 import React, { createContext, useContext, useState, useEffect } from 'react';
+import { useQueryClient } from '@tanstack/react-query';
 import { authApi, UserProfile } from '../api/auth.api';
 import { syncManager } from '../offline/sync-manager';
 
 export const DEMO_ACCOUNTS = [
-  { role: 'CITIZEN' as const, name: 'Rajesh Patil (Citizen)', phone: '9000000001' },
-  { role: 'FRONTLINE_WORKER' as const, name: 'Demo ASHA Worker', phone: '9000000002' },
-  { role: 'DOCTOR' as const, name: 'Demo Doctor (MBBS, MD)', phone: '9000000003' },
-  { role: 'FACILITY_ADMIN' as const, name: 'Demo Facility Administrator', phone: '9000000004' },
-  { role: 'DISTRICT_ADMIN' as const, name: 'Demo District Health Officer', phone: '9000000005' },
+  { key: 'citizen', role: 'CITIZEN' as const, name: 'Sunita Patil (Citizen Dhanukarwadi)', phone: '9800000001' },
+  { key: 'chw', role: 'CHW' as const, name: 'Priya Shinde (CHW Kandivali West)', phone: '9800000002' },
+  { key: 'doctor', role: 'DOCTOR' as const, name: 'Dr. Neha Kulkarni (Doctor Dhanukarwadi)', phone: '9800000003' },
+  { key: 'facility_admin', role: 'FACILITY_ADMIN' as const, name: 'Admin Dhanukarwadi (Facility Admin)', phone: '9800000004' },
+  { key: 'district_officer', role: 'DISTRICT_OFFICER' as const, name: 'Dr. Anand Mehta (DHO Mumbai Suburban)', phone: '9800000005' },
+  { key: 'doctor_ddu2', role: 'DOCTOR' as const, name: 'Dr. Rajesh Sharma (Doctor DDU2 RCH)', phone: '9800000006' },
+  { key: 'citizen_b', role: 'CITIZEN' as const, name: 'Aarav Gaikwad (Citizen Malad)', phone: '9800000007' },
 ];
 
 interface AuthContextType {
@@ -18,7 +21,7 @@ interface AuthContextType {
   isLoading: boolean;
   isOnline: boolean;
   pendingSyncCount: number;
-  loginWithDemo: (role: UserProfile['role']) => Promise<void>;
+  loginWithDemo: (keyOrRole: string) => Promise<void>;
   loginWithOtp: (phone: string, otp: string, role?: string, name?: string) => Promise<void>;
   logout: () => void;
   syncOfflineData: () => Promise<void>;
@@ -37,6 +40,7 @@ const AuthContext = createContext<AuthContextType>({
 });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
+  const queryClient = useQueryClient();
   const [user, setUser] = useState<UserProfile | null>(null);
   const [token, setToken] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -56,7 +60,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       window.addEventListener('online', handleOnline);
       window.addEventListener('offline', handleOffline);
 
-      // Check pending count
       syncManager.getPendingCount().then(setPendingSyncCount);
 
       return () => {
@@ -69,8 +72,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   // Restore user session
   useEffect(() => {
     async function restore() {
-      const savedToken = localStorage.getItem('mahaswasthya_token');
-      const savedUser = localStorage.getItem('mahaswasthya_user');
+      const savedToken =
+        localStorage.getItem('swasthyasetu_token') || localStorage.getItem('mahaswasthya_token');
+      const savedUser =
+        localStorage.getItem('swasthyasetu_user') || localStorage.getItem('mahaswasthya_user');
 
       if (savedToken && savedUser) {
         setToken(savedToken);
@@ -80,7 +85,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             const meRes = await authApi.getMe();
             if (meRes.success && meRes.data) {
               setUser(meRes.data);
-              localStorage.setItem('mahaswasthya_user', JSON.stringify(meRes.data));
+              localStorage.setItem('swasthyasetu_user', JSON.stringify(meRes.data));
             }
           }
         } catch {
@@ -88,16 +93,36 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         }
       } else {
         // Default to demo citizen in prototype mode
-        await loginWithDemo('CITIZEN');
+        await loginWithDemo('citizen');
       }
       setIsLoading(false);
     }
     restore();
   }, []);
 
-  const loginWithDemo = async (role: UserProfile['role']) => {
-    const account = DEMO_ACCOUNTS.find((a) => a.role === role) || DEMO_ACCOUNTS[0];
-    await loginWithOtp(account.phone, '123456', role, account.name);
+  const loginWithDemo = async (keyOrRole: string) => {
+    setIsLoading(true);
+    try {
+      const account =
+        DEMO_ACCOUNTS.find((a) => a.key === keyOrRole || a.role === keyOrRole) || DEMO_ACCOUNTS[0];
+
+      const res = await authApi.demoLogin(account.key, account.phone);
+      if (res.success && res.data) {
+        setUser(res.data.user);
+        setToken(res.data.accessToken);
+        localStorage.setItem('swasthyasetu_token', res.data.accessToken);
+        localStorage.setItem('swasthyasetu_user', JSON.stringify(res.data.user));
+        localStorage.setItem('mahaswasthya_token', res.data.accessToken);
+        localStorage.setItem('mahaswasthya_user', JSON.stringify(res.data.user));
+
+        // Flush all cached client queries to eliminate cross-persona data leakage
+        queryClient.clear();
+      }
+    } catch (err: any) {
+      console.error('Demo persona switch failed:', err);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const loginWithOtp = async (phone: string, otp: string, role?: string, name?: string) => {
@@ -107,8 +132,11 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (res.success && res.data) {
         setUser(res.data.user);
         setToken(res.data.accessToken);
+        localStorage.setItem('swasthyasetu_token', res.data.accessToken);
+        localStorage.setItem('swasthyasetu_user', JSON.stringify(res.data.user));
         localStorage.setItem('mahaswasthya_token', res.data.accessToken);
         localStorage.setItem('mahaswasthya_user', JSON.stringify(res.data.user));
+        queryClient.clear();
       } else {
         throw new Error(res.error?.message || 'Login failed');
       }
@@ -120,17 +148,20 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const logout = () => {
     setUser(null);
     setToken(null);
+    localStorage.removeItem('swasthyasetu_token');
+    localStorage.removeItem('swasthyasetu_user');
     localStorage.removeItem('mahaswasthya_token');
     localStorage.removeItem('mahaswasthya_user');
+    queryClient.clear();
   };
 
   const syncOfflineData = async () => {
     try {
-      const res = await syncManager.syncNow();
+      await syncManager.syncNow();
       const count = await syncManager.getPendingCount();
       setPendingSyncCount(count);
     } catch {
-      // Sync error handled by manager
+      // Handled by manager
     }
   };
 

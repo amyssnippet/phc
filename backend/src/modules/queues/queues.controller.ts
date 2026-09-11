@@ -19,13 +19,14 @@ export async function joinQueue(req: Request, res: Response, next: NextFunction)
   try {
     const facilityId = getParam(req, 'facilityId');
     const input = joinQueueSchema.parse(req.body);
-    const result = await queueService.joinQueue(
+    const priorityScore = input.priority === 'CRITICAL' ? 100 : input.priority === 'HIGH' ? 75 : input.priority === 'MEDIUM' ? 50 : 10;
+    const result = await queueService.allocateQueueToken({
       facilityId,
-      input.patientId,
-      input.department,
-      input.priority
-    );
-    await recordAudit(req, 'JOIN_QUEUE', 'QUEUE_TOKEN', result.id, { tokenNumber: result.tokenNumber });
+      patientId: input.patientId,
+      department: input.department,
+      priority: priorityScore,
+    });
+    await recordAudit(req, 'JOIN_QUEUE', 'QUEUE_TOKEN', result.id, { tokenNumber: result.displayNumber });
     return sendSuccess(res, result, undefined, 201);
   } catch (err) {
     return next(err);
@@ -35,8 +36,8 @@ export async function joinQueue(req: Request, res: Response, next: NextFunction)
 export async function callNext(req: Request, res: Response, next: NextFunction) {
   try {
     const facilityId = getParam(req, 'facilityId');
-    const result = await queueService.callNext(facilityId);
-    await recordAudit(req, 'CALL_NEXT_QUEUE', 'QUEUE_TOKEN', result.id, { tokenNumber: result.tokenNumber });
+    const result = await queueService.callNext(facilityId, undefined, req.auth);
+    await recordAudit(req, 'CALL_NEXT_QUEUE', 'QUEUE_TOKEN', result.id, { tokenNumber: result.displayNumber });
     return sendSuccess(res, result);
   } catch (err) {
     return next(err);
@@ -47,7 +48,7 @@ export async function completeQueue(req: Request, res: Response, next: NextFunct
   try {
     const facilityId = getParam(req, 'facilityId');
     const input = completeQueueSchema.parse(req.body);
-    const result = await queueService.completeCurrent(facilityId, input.tokenId);
+    const result = await queueService.completeConsultation(facilityId, input.tokenId, req.auth);
     await recordAudit(req, 'COMPLETE_QUEUE', 'QUEUE_TOKEN', result.id);
     return sendSuccess(res, result);
   } catch (err) {

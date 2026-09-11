@@ -3,7 +3,7 @@ import { redisConnection } from './config/redis.js';
 import { logger } from './utils/logger.js';
 import { prisma } from './config/database.js';
 
-logger.info('Starting MahaSwasthya Grid Background Worker...');
+logger.info('Starting SwasthyaSetu Background Worker...');
 
 const notificationWorker = new Worker(
   'notifications',

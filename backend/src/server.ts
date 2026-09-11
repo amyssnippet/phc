@@ -10,7 +10,7 @@ async function startServer() {
     await connectRedis();
 
     app.listen(env.PORT, () => {
-      logger.info(`MahaSwasthya Backend API running on port ${env.PORT} in ${env.NODE_ENV} mode`);
+      logger.info(`SwasthyaSetu Backend API running on port ${env.PORT} in ${env.NODE_ENV} mode`);
       logger.info(`Health check: http://localhost:${env.PORT}/health`);
       logger.info(`Readiness: http://localhost:${env.PORT}/ready`);
       logger.info(`API Base: http://localhost:${env.PORT}/api/v1`);

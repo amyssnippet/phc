@@ -52,21 +52,49 @@ export interface OfflineSyncQueueItem {
   errorMessage?: string;
 }
 
-export class MahaSwasthyaDatabase extends Dexie {
+export interface OfflineAppointment {
+  id: string;
+  facilityId: string;
+  facilityName: string;
+  department: string;
+  appointmentDate: string;
+  serviceDate: string;
+  startTime: string;
+  endTime: string;
+  tokenNumber: string;
+  status: string;
+}
+
+export interface OfflineQueueToken {
+  id: string;
+  facilityId: string;
+  displayNumber: string;
+  department: string;
+  status: string;
+  estimatedWaitMinutes?: number;
+  aheadCount?: number;
+}
+
+export class SwasthyaSetuDatabase extends Dexie {
   facilities!: Table<OfflineFacility, string>;
   patientDrafts!: Table<OfflinePatientDraft, number>;
   referralDrafts!: Table<OfflineReferralDraft, number>;
   syncQueue!: Table<OfflineSyncQueueItem, number>;
+  appointments!: Table<OfflineAppointment, string>;
+  queueTokens!: Table<OfflineQueueToken, string>;
 
   constructor() {
-    super('MahaSwasthyaDB');
-    this.version(1).stores({
+    super('SwasthyaSetuDB');
+    this.version(2).stores({
       facilities: 'id, externalFacilityId, name, pincode',
       patientDrafts: '++id, clientDraftId, synced, createdAt',
       referralDrafts: '++id, clientDraftId, patientId, synced, createdAt',
       syncQueue: '++id, operationId, entityType, status, clientCreatedAt',
+      appointments: 'id, facilityId, serviceDate, status',
+      queueTokens: 'id, facilityId, displayNumber, status',
     });
   }
 }
 
-export const db = new MahaSwasthyaDatabase();
+export const MahaSwasthyaDatabase = SwasthyaSetuDatabase;
+export const db = new SwasthyaSetuDatabase();

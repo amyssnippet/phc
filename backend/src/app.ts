@@ -72,8 +72,8 @@ app.get('/api/docs', (req: Request, res: Response) => {
   return sendSuccess(res, {
     openapi: '3.0.3',
     info: {
-      title: 'MahaSwasthya Grid API',
-      version: '1.0.0',
+      title: 'SwasthyaSetu API',
+      version: '2.0.0',
       description: 'Public Healthcare Access & Continuity Network - Government of Maharashtra',
     },
     servers: [{ url: '/api/v1' }],

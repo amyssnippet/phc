@@ -13,7 +13,7 @@ const router = Router();
 router.get('/summary', getSummary);
 router.get('/issues', listIssues);
 router.get('/facilities/:facilityId', getFacilityIssues);
-router.post('/issues/:id/resolve', requireAuth, requireRole('DISTRICT_ADMIN', 'SUPER_ADMIN'), resolveIssue);
-router.post('/issues/:id/ignore', requireAuth, requireRole('DISTRICT_ADMIN', 'SUPER_ADMIN'), ignoreIssue);
+router.post('/issues/:id/resolve', requireAuth, requireRole('DISTRICT_OFFICER', 'SUPER_ADMIN'), resolveIssue);
+router.post('/issues/:id/ignore', requireAuth, requireRole('DISTRICT_OFFICER', 'SUPER_ADMIN'), ignoreIssue);
 
 export default router;

@@ -155,7 +155,7 @@ export default function DistrictCommandDashboard() {
           <CardContent className="p-5">
             <div className="text-xs font-medium text-slate-500">Facilities Online</div>
             <div className="text-2xl font-bold text-slate-900 dark:text-slate-100 mt-1">
-              {overview?.totalFacilities ?? 10}
+              {overview?.totalFacilities ?? 50}
             </div>
             <div className="text-xs text-emerald-600 mt-0.5 font-medium">100% PostGIS Geocoded</div>
           </CardContent>

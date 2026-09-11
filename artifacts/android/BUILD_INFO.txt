@@ -1,0 +1,26 @@
+Application Name: SwasthyaSetu (स्वास्थ्यसेतु)
+Sub-Brand: Public Healthcare Access & Continuity Network
+Package ID: in.swasthyasetu.app
+Version: 1.0 (versionCode: 1)
+Build Type: debug
+Build Date: 2026-09-11 08:49:35 IST
+Target Android SDK: 35 (Android 15)
+Min Android SDK: 23 (Android 6.0 Marshmallow)
+Architecture / Format: Universal Android APK (assets/public static bundle + Dexie offline store)
+Git Commit: fb0ef4ca5dbd08fae57bffaa9080efcb557c091c
+SHA-256 Checksum: 61bc255598fcf537331919b21be69fa9660cc8ced15afed31f8f469196456a0c
+APK File Size: 5.8 MB
+Backend Base URL Strategy:
+  - Localhost/Web: http://localhost:4000/api/v1
+  - Android Emulator: http://10.0.2.2:4000/api/v1
+  - Physical Device / Production: Configurable via NEXT_PUBLIC_API_URL or capacitor cleartext config
+Bundled Offline Data:
+  - 50 Urban Primary Health Centres in Mumbai Suburban District (frontend/lib/data/mumbai-suburban.public.json)
+  - Zero private provider contacts exposed (sanitized HFR public data)
+  - Dexie IndexedDB caching for appointments, tokens, and triage records
+Verified Capabilities:
+  - Offline facility search and Haversine distance sorting
+  - Online atomic OPD token creation
+  - Multi-PHC scoped queues
+  - Clean portrait orientation
+  - Cleartext HTTP support for local development and physical testing

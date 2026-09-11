@@ -1,7 +1,10 @@
 import { prisma } from '../../config/database.js';
-import { AppointmentStatus, QueueStatus, Urgency } from '@prisma/client';
-import { NotFoundError, DomainError } from '../../utils/errors.js';
+import { AppointmentStatus, QueueStatus } from '@prisma/client';
+import { NotFoundError, DomainError, ForbiddenError } from '../../utils/errors.js';
 import { CreateAppointmentInput, UpdateAppointmentInput } from './appointments.schema.js';
+import { queueService } from '../queues/queues.service.js';
+import { AuthContext } from '../../authz/scopes.js';
+import { AuthorizationPolicy } from '../../authz/policy.js';
 
 export class AppointmentService {
   async listAppointments(params: {
@@ -53,7 +56,7 @@ export class AppointmentService {
     };
   }
 
-  async createAppointment(input: CreateAppointmentInput, userId?: string) {
+  async createAppointment(input: CreateAppointmentInput, actor?: AuthContext) {
     // 1. Verify Patient and Facility
     const [patient, facility] = await Promise.all([
       prisma.patient.findUnique({ where: { id: input.patientId } }),
@@ -70,7 +73,6 @@ export class AppointmentService {
       throw new DomainError('Selected facility is non-functional', 'FACILITY_CLOSED');
     }
 
-    // 2. Validate day of week against facility hours
     const appDate = new Date(input.appointmentDate);
     const weekday = appDate.getDay();
     const dayHour = facility.hours.find((h) => h.weekday === weekday && h.active);
@@ -79,76 +81,90 @@ export class AppointmentService {
       throw new DomainError('Facility is closed on requested weekday', 'FACILITY_CLOSED');
     }
 
-    // 3. Generate token in transaction
-    const dateStart = new Date(appDate);
-    dateStart.setHours(0, 0, 0, 0);
-    const dateEnd = new Date(appDate);
-    dateEnd.setHours(23, 59, 59, 999);
+    const serviceDate = appDate.toISOString().slice(0, 10);
+    const department = input.department || 'GENERAL_MEDICINE';
 
+    // 2. Execute within an atomic transaction
     return prisma.$transaction(async (tx) => {
-      const countToday = await tx.appointment.count({
-        where: {
-          facilityId: facility.id,
-          appointmentDate: { gte: dateStart, lte: dateEnd },
-        },
-      });
-
-      const deptPrefix = input.department === 'MATERNAL_CARE' ? 'OBG' : input.department === 'CHILD_CARE' ? 'PED' : 'OPD';
-      const tokenNumber = `${deptPrefix}-${String(countToday + 1).padStart(3, '0')}`;
-
+      // Create appointment record
       const appointment = await tx.appointment.create({
         data: {
           patientId: patient.id,
           facilityId: facility.id,
           practitionerId: input.practitionerId || null,
           appointmentDate: appDate,
+          serviceDate,
+          department,
           startTime: input.startTime,
           endTime: input.endTime,
-          tokenNumber,
           status: AppointmentStatus.BOOKED,
-          source: input.source,
+          source: input.source || 'CITIZEN',
           demoData: true,
         },
       });
 
-      const queueToken = await tx.queueToken.create({
-        data: {
+      // Atomically allocate sequential QueueToken (e.g. GM-042)
+      const queueToken = await queueService.allocateQueueToken(
+        {
           facilityId: facility.id,
+          patientId: patient.id,
           appointmentId: appointment.id,
-          department: input.department,
-          tokenNumber,
-          priority: Urgency.LOW,
-          status: QueueStatus.WAITING,
-          estimatedWaitMinutes: (countToday % 8 + 1) * 8,
+          serviceDate,
+          department,
+          priority: 10, // NORMAL
+          source: 'APPOINTMENT',
         },
+        tx
+      );
+
+      // Back-reference tokenNumber on appointment
+      await tx.appointment.update({
+        where: { id: appointment.id },
+        data: { tokenNumber: queueToken.displayNumber },
       });
 
-      // Notification
-      const recipientUserId = patient.userId || userId;
+      // Send confirmation notification
+      const recipientUserId = patient.userId || actor?.userId;
       if (recipientUserId) {
         await tx.notification.create({
           data: {
             userId: recipientUserId,
-            title: 'Appointment Booked',
-            body: `Your appointment at ${facility.name} is booked. Token: ${tokenNumber}`,
+            title: 'Appointment Confirmed',
+            body: `Your appointment at ${facility.name} (${department}) is confirmed. Token: ${queueToken.displayNumber}`,
             type: 'APPOINTMENT_BOOKED',
             data: {
               appointmentId: appointment.id,
               facilityId: facility.id,
-              tokenNumber,
+              displayNumber: queueToken.displayNumber,
             },
           },
         });
       }
 
+      // Record audit
+      await tx.auditLog.create({
+        data: {
+          actorId: actor?.userId || null,
+          action: 'APPOINTMENT_CREATE',
+          entityType: 'APPOINTMENT',
+          entityId: appointment.id,
+          metadata: {
+            facilityId: facility.id,
+            patientId: patient.id,
+            tokenNumber: queueToken.displayNumber,
+          },
+        },
+      });
+
       return {
         ...appointment,
+        tokenNumber: queueToken.displayNumber,
         queueToken,
       };
     });
   }
 
-  async getAppointmentById(id: string) {
+  async getAppointmentById(id: string, actor?: AuthContext) {
     const app = await prisma.appointment.findUnique({
       where: { id },
       include: {
@@ -159,6 +175,11 @@ export class AppointmentService {
       },
     });
     if (!app) throw new NotFoundError('Appointment not found', 'APPOINTMENT_NOT_FOUND');
+
+    if (actor && !AuthorizationPolicy.canAccessAppointment(actor, { patientId: app.patientId, facilityId: app.facilityId })) {
+      throw new ForbiddenError('You do not have permission to view this appointment', 'FORBIDDEN');
+    }
+
     return app;
   }
 
@@ -190,9 +211,16 @@ export class AppointmentService {
     });
   }
 
-  async cancelAppointment(id: string) {
+  async cancelAppointment(id: string, actor?: AuthContext) {
+    const app = await prisma.appointment.findUnique({ where: { id } });
+    if (!app) throw new NotFoundError('Appointment not found', 'APPOINTMENT_NOT_FOUND');
+
+    if (actor && !AuthorizationPolicy.canAccessAppointment(actor, { patientId: app.patientId, facilityId: app.facilityId })) {
+      throw new ForbiddenError('You do not have permission to cancel this appointment', 'FORBIDDEN');
+    }
+
     return prisma.$transaction(async (tx) => {
-      const app = await tx.appointment.update({
+      const updated = await tx.appointment.update({
         where: { id },
         data: { status: AppointmentStatus.CANCELLED },
       });
@@ -202,7 +230,17 @@ export class AppointmentService {
         data: { status: QueueStatus.CANCELLED },
       });
 
-      return app;
+      await tx.auditLog.create({
+        data: {
+          actorId: actor?.userId || null,
+          action: 'APPOINTMENT_CANCEL',
+          entityType: 'APPOINTMENT',
+          entityId: id,
+          metadata: { patientId: app.patientId, facilityId: app.facilityId },
+        },
+      });
+
+      return updated;
     });
   }
 }

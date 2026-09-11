@@ -1,33 +1,33 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { useQuery } from '@tanstack/react-query';
 import { facilityRepository } from '../lib/offline/facility-repository';
-import { FacilityPublic } from '../lib/api/facilities.api';
+import { queueRepository } from '../lib/offline/citizen-repositories';
 import { useI18n } from '../lib/i18n/i18n-context';
-import { Card, CardHeader, CardTitle, CardContent } from '../components/ui/card';
+import { useAuth } from '../lib/auth/auth-context';
+import { Card, CardTitle } from '../components/ui/card';
 import { Badge } from '../components/ui/badge';
 import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 import {
   Search,
   MapPin,
-  Clock,
-  ShieldCheck,
-  Building2,
-  Stethoscope,
   ArrowRight,
   Sparkles,
   WifiOff,
+  Activity,
+  ChevronRight,
 } from 'lucide-react';
 
 export default function HomePage() {
   const { t } = useI18n();
+  const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSpecialty, setSelectedSpecialty] = useState('');
 
-  const { data, isLoading, refetch } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['facilities', searchTerm, selectedSpecialty],
     queryFn: () =>
       facilityRepository.search({
@@ -36,8 +36,16 @@ export default function HomePage() {
       }),
   });
 
+  const { data: queueData } = useQuery({
+    queryKey: ['citizen-home-queue', user?.id],
+    queryFn: () => queueRepository.getMyQueueStatus(),
+    enabled: !!user && user.role === 'CITIZEN',
+    refetchInterval: 15000,
+  });
+
   const facilities = data?.items || [];
   const isOffline = data?.isOffline || false;
+  const queueStatus = queueData?.data;
 
   const specialtiesList = [
     'General Medicine',
@@ -51,7 +59,7 @@ export default function HomePage() {
 
   return (
     <div className="space-y-8">
-      {/* Hero Section */}
+      {/* Hero Section per Section 13 */}
       <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-2xl p-6 sm:p-10 shadow-lg relative overflow-hidden">
         <div className="max-w-2xl relative z-10 space-y-4">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-blue-700/80 text-blue-100 border border-blue-500/30">
@@ -59,21 +67,21 @@ export default function HomePage() {
             {t('mumbaiSuburban')}
           </span>
           <h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-            {t('appName')}
+            How can we help you today?
           </h1>
           <p className="text-blue-100 text-sm sm:text-base leading-relaxed">
-            {t('tagline')}. Find functional public facilities, book consultation tokens, track specialist referrals, and maintain complete continuity of care.
+            {t('appName')} connects you to functional public health facilities across Mumbai Suburban district with live OPD queue tracking and seamless appointments.
           </p>
 
           <div className="flex flex-wrap gap-3 pt-2">
             <Link href="/find-care">
-              <Button variant="secondary" className="bg-white text-blue-900 hover:bg-blue-50 font-bold">
-                {t('findCare')} <ArrowRight className="ml-2 w-4 h-4" />
+              <Button className="bg-white text-blue-900 hover:bg-blue-50 font-bold shadow-sm">
+                Find care near me <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/citizen/referrals">
-              <Button variant="outline" className="bg-transparent border-white/40 text-white hover:bg-white/10">
-                {t('myReferrals')}
+            <Link href="/citizen/appointments/new">
+              <Button className="bg-blue-800/60 border border-white/40 text-white hover:bg-blue-700 font-semibold">
+                Book a consultation token
               </Button>
             </Link>
           </div>
@@ -88,6 +96,47 @@ export default function HomePage() {
             <span>
               <strong>{t('offlineMode')}:</strong> {t('offlineDesc')}
             </span>
+          </div>
+        </div>
+      )}
+
+      {/* Section 13: My Care Today (if citizen has active token/appointment) */}
+      {user?.role === 'CITIZEN' && queueStatus?.hasActiveToken && queueStatus?.ownToken && (
+        <div className="bg-white border border-blue-200 rounded-2xl p-5 shadow-xs">
+          <div className="flex items-center justify-between mb-3">
+            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+              <Activity className="w-4 h-4 text-blue-600 animate-pulse" />
+              My Care Today
+            </h2>
+            <Link href="/citizen/appointments" className="text-xs font-semibold text-blue-600 hover:underline flex items-center">
+              View My Tokens <ChevronRight className="w-3.5 h-3.5 ml-0.5" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-blue-50/60 p-4 rounded-xl border border-blue-100">
+            <div>
+              <span className="text-[11px] text-slate-500 block">Your Token</span>
+              <span className="text-2xl font-black text-blue-700 font-mono">
+                {queueStatus.ownToken.tokenNumber}
+              </span>
+            </div>
+            <div>
+              <span className="text-[11px] text-slate-500 block">Department</span>
+              <span className="text-sm font-semibold text-slate-800">
+                {queueStatus.ownToken.department || 'General Medicine'}
+              </span>
+            </div>
+            <div>
+              <span className="text-[11px] text-slate-500 block">Patients Ahead</span>
+              <span className="text-2xl font-bold text-slate-700">
+                {queueStatus.patientsAhead ?? 0}
+              </span>
+            </div>
+            <div>
+              <span className="text-[11px] text-slate-500 block">Estimated Wait</span>
+              <span className="text-2xl font-bold text-amber-600">
+                {queueStatus.ownToken.estimatedWaitMinutes ?? 15} min
+              </span>
+            </div>
           </div>
         </div>
       )}
@@ -149,14 +198,14 @@ export default function HomePage() {
       {/* Facility Results Header */}
       <div className="flex items-center justify-between">
         <h2 className="text-lg font-bold text-slate-900">
-          Public Healthcare Facilities ({facilities.length})
+          Nearby Public Healthcare Facilities ({facilities.length})
         </h2>
         <span className="text-xs text-slate-500 font-medium">
           Source: Health Facility Registry (HFR)
         </span>
       </div>
 
-      {/* Facility Grid */}
+      {/* Facility Grid matching Section 23 */}
       {isLoading ? (
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {[1, 2, 3, 4, 5, 6].map((n) => (
@@ -192,6 +241,15 @@ export default function HomePage() {
                     </Link>
                   </CardTitle>
 
+                  <div className="flex items-center gap-2 text-xs text-slate-600 mb-2">
+                    <span className="inline-flex items-center gap-1 font-semibold text-emerald-700">
+                      <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
+                      Operational
+                    </span>
+                    <span className="text-slate-300">·</span>
+                    <span>{fac.pincode ? `${fac.pincode}` : 'Mumbai Suburban'}</span>
+                  </div>
+
                   <div className="flex items-start gap-1.5 text-xs text-slate-600 mb-3">
                     <MapPin className="w-3.5 h-3.5 text-slate-400 mt-0.5 shrink-0" />
                     <span className="line-clamp-2">{fac.address || 'Mumbai Suburban District'}</span>
@@ -226,13 +284,14 @@ export default function HomePage() {
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
-                  <span className="text-xs font-semibold text-emerald-700 flex items-center gap-1">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500"></span>
-                    {fac.operationalStatus || 'FUNCTIONAL'}
-                  </span>
-                  <Link href={`/facilities/${fac.id}`}>
-                    <Button variant="ghost" size="sm" className="text-blue-700 hover:text-blue-800">
-                      View Details & Queue →
+                  <Link href={`/facilities/${fac.id}`} className="flex-1">
+                    <Button variant="ghost" size="sm" className="w-full text-xs text-slate-700 hover:text-blue-700">
+                      View Details
+                    </Button>
+                  </Link>
+                  <Link href={`/citizen/appointments/new?facilityId=${fac.id}`} className="flex-1">
+                    <Button variant="primary" size="sm" className="w-full text-xs bg-blue-700 hover:bg-blue-800 text-white shadow-xs">
+                      Book Token
                     </Button>
                   </Link>
                 </div>
@@ -241,6 +300,11 @@ export default function HomePage() {
           })}
         </div>
       )}
+
+      {/* Offline facility info note per Section 13 */}
+      <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-center text-xs text-slate-500">
+        Offline facility information is available even without internet.
+      </div>
     </div>
   );
 }

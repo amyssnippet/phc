@@ -1,18 +1,34 @@
-# MahaSwasthya Grid (महास्वास्थ्य ग्रिड)
+# SwasthyaSetu (स्वास्थ्यसेतु)
 
-> **SIH26133 Prototype** — Offline-First Geospatial Health Navigation, Algorithmic Care Routing, and Closed-Loop Referral Management for Urban Maharashtra.
+> **SIH26133 Prototype** — Offline-First Geospatial Health Navigation, Multi-PHC Atomic Queue Management, Algorithmic Care Routing, and Closed-Loop Referral Ecosystem for Urban Maharashtra.
 
 [![Docker Compose](https://img.shields.io/badge/Docker-Compose_v2-2496ED?logo=docker&logoColor=white)](#docker-compose-quickstart)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL_17-PostGIS_3.5-336791?logo=postgresql&logoColor=white)](#geospatial-engine)
 [![Next.js](https://img.shields.io/badge/Next.js_14-App_Router-000000?logo=next.js&logoColor=white)](#frontend-architecture)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.6-3178C6?logo=typescript&logoColor=white)](#technology-stack)
+[![Security Tested](https://img.shields.io/badge/Security-IDOR_Protected-success?logo=shield)](backend/tests/integration/security-isolation.test.ts)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](#license)
 
 ---
 
 ## Highlights & Key Innovations
 
-1. **Deterministic 100-Point Algorithmic Care Router**:
+1. **Dual Specialized Application Shells**:
+   - **Citizen Web App (`/citizen/*`)**: Mobile-first responsive UI with bottom navigation, fast appointment booking, atomic queue token allocation with live wait-time estimate, care timeline, and bilingual (English / Marathi / Hindi) support.
+   - **Unified Workforce Portal (`/portal/*`)**: Scoped role-based sidebar console providing live OPD queues with chamber call controls, patient directory with local draft support, syndromic CDSS triage, referral desk (accept/reject), and district data quality governance.
+
+2. **Atomic Multi-PHC OPD Queue System (`QueueCounter`)**:
+   - Transactional, race-condition-safe sequential token generator using PostgreSQL row-level locking.
+   - Department-specific prefixes (e.g., `GM-001` for General Medicine, `PED-001` for Pediatrics).
+   - Verified under high concurrency: 20 simultaneous walk-in allocations produce 20 distinct sequential tokens with zero gaps, zero duplicates, and complete multi-facility isolation.
+
+3. **Strict Zero-Trust Role Security Isolation & IDOR Blocking**:
+   - Explicitly partitioned REST APIs (`/api/v1/me`, `/api/v1/worker`, `/api/v1/doctor`, `/api/v1/facility`, `/api/v1/district`).
+   - Doctors and facility staff can only access clinical records and call queues for their assigned facilities.
+   - Citizens cannot access other patients' medical records or practitioner phone numbers.
+   - Client-side persona switcher clears all React Query cache data to prevent cross-session leakage.
+
+4. **Deterministic 100-Point Algorithmic Care Router**:
    Distributes patient load away from crowded tertiary hospitals to equipped Urban Primary Health Centres (UPHCs) using multi-criteria weighted scoring:
    - **Distance**: 35% (PostGIS geodesic distance)
    - **OPD Queue Wait Time**: 25% (Live token load)
@@ -20,58 +36,58 @@
    - **Operating Hours**: 10% (Open now vs closing soon)
    - **Facility Data Quality**: 10% (Registry reliability)
 
-2. **Offline-First Frontline Worker (CHW / ASHA) Desk**:
+5. **Offline-First Frontline Worker (CHW / ASHA) Desk**:
    - Built on **Dexie / IndexedDB** for 100% functionality without internet.
    - Point-of-care patient registration with local draft generation.
    - Syndromic triage with vital signs input and **Clinical Decision Support (CDSS)** safety rules.
    - Idempotent batch push to `/api/v1/sync/push` with conflict resolution.
 
-3. **8-Step Closed-Loop Referral State Machine**:
+6. **Closed-Loop Referral Lifecycle**:
    - Eliminates lost paper slips between primary health posts and secondary hospitals.
-   - Deterministic lifecycle: `REQUESTED` &rarr; `ACCEPTED` &rarr; `DISPATCHED` &rarr; `ARRIVED` &rarr; `IN_CONSULTATION` &rarr; `COMPLETED`.
-   - Complete vertical milestone timeline accessible by both citizen and clinician.
+   - Deterministic lifecycle: `CREATED` &rarr; `ACCEPTED` &rarr; `IN_CONSULTATION` &rarr; `COMPLETED`.
+   - Complete milestone audit timeline accessible by both citizen and clinician.
 
-4. **Real HFR Source Ingestion & Data Quality Engine**:
-   - Ingests real 10-facility dataset from Mumbai Suburban district (`mumbai-suburban.json`).
-   - Automatically detects erroneous government records (specifically Saturday invalid close times `17:93` in DDU2 RCH UPHC and `17:73` in Dindoshi Vasahat UPHC).
+7. **Real HFR Source Ingestion & Data Quality Engine**:
+   - Ingests all 50 Urban Primary Health Centres & Secondary Facilities across Mumbai Suburban district (`mumbai-suburban.json`).
+   - Automatically detects erroneous government records (e.g. invalid close times `17:93` in DDU2 RCH UPHC and `17:73` in Dindoshi Vasahat UPHC).
    - Generates sanitized public registry (`mumbai-suburban.public.json`) stripping personal officer contacts to comply with DPDP Act 2023.
-
-5. **Interactive GIS District Command Map**:
-   - Client-rendered Leaflet OpenStreetMap visualizer centered on Mumbai Suburban.
-   - PostGIS GiST spatial indexing for millisecond radius queries.
 
 ---
 
 ## Technology Stack
 
-- **Frontend**: Next.js 14 (App Router, Standalone build), React 18, Tailwind CSS, Lucide Icons, Recharts, Leaflet, Dexie.js (IndexedDB).
+- **Frontend & Mobile**: Next.js 14 (App Router, Standalone & Static Export), React 18, Capacitor 7 Android Native Shell, Tailwind CSS, Lucide Icons, Recharts, Leaflet, Dexie.js (IndexedDB).
 - **Backend**: Node.js 20, Express 5, TypeScript, Prisma ORM, BullMQ, Redis 7, Winston logger.
 - **Database & Spatial**: PostgreSQL 17 with PostGIS 3.5 extension (`postgis/postgis:17-3.5`).
-- **DevOps**: Multi-stage Dockerfiles, Docker Compose, Healthchecks, Makefile.
+- **DevOps & Mobile Build**: Multi-stage Dockerfiles, Docker Compose, Containerized Android SDK 35 / Gradle Builder (`swasthyasetu-android-builder`).
 
 ---
 
-## Quickstart
+## Quick Start (Section 162)
 
-### Prerequisites
-- Docker & Docker Compose (v2.20+)
-- Node.js 20+ & npm (if running locally without Docker)
-
-### Option A: 1-Command Startup with Docker Compose (Recommended)
-
+### 1. Launch Services
 ```bash
-# Clone and enter directory
-cd /home/amolycd/Dev/phc
-
-# Start all 5 services (PostgreSQL, Redis, Backend API, Worker, Frontend)
-make up
-# Or: docker compose up -d --build
+docker compose up -d --build
 ```
 
-Access the applications:
-- **Web Application (Citizen & Portals)**: [http://localhost:3000](http://localhost:3000)
-- **Backend API & Health**: [http://localhost:4000/health](http://localhost:4000/health)
-- **API Documentation & Diagnostics**: [http://localhost:4000/ready](http://localhost:4000/ready)
+### 2. Verify Service Health
+- **Web Application**: [http://localhost:3000](http://localhost:3000)
+- **API Health Check**: [http://localhost:4000/health](http://localhost:4000/health)
+- **API Readiness Check**: [http://localhost:4000/ready](http://localhost:4000/ready)
+
+### 3. Android Citizen Native APK
+The verified native debug APK is built and ready in:
+```text
+artifacts/android/SwasthyaSetu-debug.apk
+```
+Package ID: `in.swasthyasetu.app` | Target SDK: 35 | Size: 5.8 MB
+
+To re-build the APK locally (using containerized Android SDK):
+```bash
+cd frontend && NEXT_EXPORT=true npm run build && npx cap sync android && cd ..
+docker run --rm -v $(pwd)/frontend:/app -w /app/android swasthyasetu-android-builder:latest ./gradlew --no-daemon assembleDebug
+cp frontend/android/app/build/outputs/apk/debug/app-debug.apk artifacts/android/SwasthyaSetu-debug.apk
+```
 
 ### Option B: Local Development Setup
 

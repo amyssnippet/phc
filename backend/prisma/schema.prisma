@@ -9,10 +9,10 @@ generator client {
 
 enum UserRole {
   CITIZEN
-  FRONTLINE_WORKER
+  CHW
   DOCTOR
   FACILITY_ADMIN
-  DISTRICT_ADMIN
+  DISTRICT_OFFICER
   SUPER_ADMIN
 }
 
@@ -37,6 +37,7 @@ enum QueueStatus {
   CALLED
   IN_CONSULTATION
   COMPLETED
+  NO_SHOW
   CANCELLED
 }
 
@@ -132,47 +133,109 @@ model User {
   role              UserRole       @default(CITIZEN)
   preferredLanguage String         @default("en")
   demoUser          Boolean        @default(false)
+  active            Boolean        @default(true)
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
 
-  patient           Patient?
-  practitioner      Practitioner?
-  referralsCreated  Referral[]     @relation("ReferralCreatedBy")
-  consentRequests   ConsentRecord[] @relation("UserConsentRequests")
-  notifications     Notification[]
+  patient             Patient?
+  practitioner        Practitioner?
+  facilityMemberships FacilityMembership[]
+  chwAssignments      ChwAssignment[]
+  districtAssignments DistrictAssignment[]
+  registeredPatients  Patient[]      @relation("PatientRegisteredBy")
+  referralsCreated    Referral[]     @relation("ReferralCreatedBy")
+  consentRequests     ConsentRecord[] @relation("UserConsentRequests")
+  notifications       Notification[]
+}
+
+model FacilityMembership {
+  id             String   @id @default(uuid()) @db.Uuid
+  userId         String   @db.Uuid
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  facilityId     String   @db.Uuid
+  facility       Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  membershipRole String   @default("STAFF")
+  active         Boolean  @default(true)
+  startsAt       DateTime @default(now())
+  endsAt         DateTime?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  @@unique([userId, facilityId])
+  @@index([userId])
+  @@index([facilityId])
+}
+
+model ChwAssignment {
+  id            String    @id @default(uuid()) @db.Uuid
+  userId        String    @db.Uuid
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  facilityId    String?   @db.Uuid
+  facility      Facility? @relation(fields: [facilityId], references: [id], onDelete: SetNull)
+  catchmentCode String?
+  pincode       String?
+  active        Boolean   @default(true)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  @@index([userId])
+  @@index([facilityId])
+  @@index([catchmentCode])
+  @@map("CHWAssignment")
+}
+
+model DistrictAssignment {
+  id           String   @id @default(uuid()) @db.Uuid
+  userId       String   @db.Uuid
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  districtCode String   @default("MUMBAI_SUBURBAN")
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@index([userId])
+  @@index([districtCode])
 }
 
 model Patient {
-  id              String         @id @default(uuid()) @db.Uuid
-  userId          String?        @unique @db.Uuid
-  user            User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
-  patientCode     String         @unique
-  firstName       String
-  lastName        String?
-  dateOfBirth     DateTime?
-  sex             String?
-  phone           String?
-  address         String?
-  pincode         String?
-  latitude        Float?
-  longitude       Float?
-  location        Unsupported("geography(Point,4326)")?
-  abhaReference   String?
-  emergencyName   String?
-  emergencyPhone  String?
-  demoData        Boolean        @default(false)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+  id                     String         @id @default(uuid()) @db.Uuid
+  userId                 String?        @unique @db.Uuid
+  user                   User?          @relation(fields: [userId], references: [id], onDelete: SetNull)
+  patientCode            String         @unique
+  firstName              String
+  lastName               String?
+  dateOfBirth            DateTime?
+  sex                    String?
+  phone                  String?
+  address                String?
+  pincode                String?
+  latitude               Float?
+  longitude              Float?
+  location               Unsupported("geography(Point,4326)")?
+  abhaReference          String?
+  emergencyName          String?
+  emergencyPhone         String?
+  registeredByUserId     String?        @db.Uuid
+  registeredByUser       User?          @relation("PatientRegisteredBy", fields: [registeredByUserId], references: [id], onDelete: SetNull)
+  registeredAtFacilityId String?        @db.Uuid
+  registeredAtFacility   Facility?      @relation("PatientRegisteredFacility", fields: [registeredAtFacilityId], references: [id], onDelete: SetNull)
+  catchmentCode          String?
+  demoData               Boolean        @default(false)
+  createdAt              DateTime       @default(now())
+  updatedAt              DateTime       @updatedAt
 
   encounters      Encounter[]
   triageSessions  TriageSession[]
   appointments    Appointment[]
+  queueTokens     QueueToken[]
   referrals       Referral[]
   followUps       FollowUp[]
   consentRecords  ConsentRecord[]
 
   @@index([patientCode])
   @@index([pincode])
+  @@index([registeredByUserId])
+  @@index([registeredAtFacilityId])
 }
 
 model Facility {
@@ -210,6 +273,11 @@ model Facility {
   encounters         Encounter[]
   appointments       Appointment[]
   queueTokens        QueueToken[]
+  queueCounters      QueueCounter[]
+  appointmentSlots   AppointmentSlot[]
+  memberships        FacilityMembership[]
+  chwAssignments    ChwAssignment[]
+  registeredPatients Patient[]      @relation("PatientRegisteredFacility")
   referralsFrom      Referral[]     @relation("SourceFacility")
   referralsTo        Referral[]     @relation("DestinationFacility")
   diagnostics        DiagnosticService[]
@@ -340,6 +408,24 @@ model TriageSession {
   updatedAt         DateTime  @updatedAt
 }
 
+model AppointmentSlot {
+  id          String   @id @default(uuid()) @db.Uuid
+  facilityId  String   @db.Uuid
+  facility    Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  department  String   @default("GENERAL_MEDICINE")
+  date        String   // "YYYY-MM-DD"
+  startTime   String   // "09:00"
+  endTime     String   // "09:30"
+  capacity    Int      @default(10)
+  bookedCount Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([facilityId, department, date, startTime, endTime])
+  @@index([facilityId, date])
+}
+
 model Appointment {
   id              String            @id @default(uuid()) @db.Uuid
   patientId       String            @db.Uuid
@@ -348,6 +434,8 @@ model Appointment {
   facility        Facility          @relation(fields: [facilityId], references: [id], onDelete: Cascade)
   practitionerId  String?           @db.Uuid
   practitioner    Practitioner?     @relation(fields: [practitionerId], references: [id], onDelete: SetNull)
+  department      String            @default("GENERAL_MEDICINE")
+  serviceDate     String?           // "YYYY-MM-DD"
   appointmentDate DateTime
   startTime       String
   endTime         String
@@ -362,23 +450,49 @@ model Appointment {
 
   @@index([facilityId])
   @@index([appointmentDate])
+  @@index([patientId])
+}
+
+model QueueCounter {
+  id               String   @id @default(uuid()) @db.Uuid
+  facilityId       String   @db.Uuid
+  facility         Facility @relation(fields: [facilityId], references: [id], onDelete: Cascade)
+  serviceDate      String   // "YYYY-MM-DD"
+  department       String   @default("GENERAL_MEDICINE")
+  lastIssuedNumber Int      @default(0)
+  updatedAt        DateTime @updatedAt
+
+  @@unique([facilityId, serviceDate, department])
+  @@index([facilityId, serviceDate])
 }
 
 model QueueToken {
   id                   String      @id @default(uuid()) @db.Uuid
   facilityId           String      @db.Uuid
   facility             Facility    @relation(fields: [facilityId], references: [id], onDelete: Cascade)
-  appointmentId        String      @unique @db.Uuid
-  appointment          Appointment @relation(fields: [appointmentId], references: [id], onDelete: Cascade)
-  department           String      @default("OPD")
-  tokenNumber          String
-  priority             Urgency     @default(LOW)
+  appointmentId        String?     @unique @db.Uuid
+  appointment          Appointment? @relation(fields: [appointmentId], references: [id], onDelete: SetNull)
+  patientId            String      @db.Uuid
+  patient              Patient     @relation(fields: [patientId], references: [id], onDelete: Cascade)
+  serviceDate          String      @default("2026-09-11") // "YYYY-MM-DD"
+  department           String      @default("GENERAL_MEDICINE")
+  tokenSequence        Int         @default(1)
+  tokenPrefix          String      @default("GM")
+  displayNumber        String      // "GM-042"
+  priority             Int         @default(10) // EMERGENCY=100, HIGH=75, PRIORITY=50, NORMAL=10
   status               QueueStatus @default(WAITING)
   estimatedWaitMinutes Int?
+  source               String      @default("APPOINTMENT") // "APPOINTMENT", "WALK_IN", "REFERRAL"
   calledAt             DateTime?
+  consultationStartedAt DateTime?
   completedAt          DateTime?
   createdAt            DateTime    @default(now())
   updatedAt            DateTime    @updatedAt
+
+  @@unique([facilityId, serviceDate, department, tokenSequence])
+  @@unique([facilityId, serviceDate, department, displayNumber])
+  @@index([facilityId, serviceDate, department, status])
+  @@index([patientId, serviceDate])
 }
 
 model Referral {

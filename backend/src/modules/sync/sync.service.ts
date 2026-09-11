@@ -38,6 +38,7 @@ export class SyncService {
               phone: p.phone || null,
               address: p.address || null,
               pincode: p.pincode || null,
+              registeredByUserId: userId || null,
               demoData: true,
             },
           });
@@ -46,7 +47,7 @@ export class SyncService {
           const p = op.payload;
           const creator = userId
             ? await prisma.user.findUnique({ where: { id: userId } })
-            : await prisma.user.findFirst({ where: { role: 'FRONTLINE_WORKER' } });
+            : await prisma.user.findFirst({ where: { role: 'CHW' } });
 
           const referral = await prisma.referral.create({
             data: {

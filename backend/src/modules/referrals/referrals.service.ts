@@ -257,10 +257,31 @@ export class ReferralService {
     this.validateTransition(ref.status, ReferralStatus.APPOINTMENT_BOOKED);
 
     return prisma.$transaction(async (tx) => {
-      const count = await tx.appointment.count({
-        where: { facilityId: ref.destinationFacilityId },
+      const serviceDate = new Date(appointmentData.appointmentDate).toISOString().slice(0, 10);
+      const department = 'SPECIALIST';
+      const tokenPrefix = 'SP';
+
+      const counter = await tx.queueCounter.upsert({
+        where: {
+          facilityId_serviceDate_department: {
+            facilityId: ref.destinationFacilityId,
+            serviceDate,
+            department,
+          },
+        },
+        update: {
+          lastIssuedNumber: { increment: 1 },
+        },
+        create: {
+          facilityId: ref.destinationFacilityId,
+          serviceDate,
+          department,
+          lastIssuedNumber: 1,
+        },
       });
-      const tokenNumber = `REF-${String(count + 1).padStart(3, '0')}`;
+
+      const tokenSequence = counter.lastIssuedNumber;
+      const displayNumber = `${tokenPrefix}-${String(tokenSequence).padStart(3, '0')}`;
 
       const appointment = await tx.appointment.create({
         data: {
@@ -269,7 +290,7 @@ export class ReferralService {
           appointmentDate: new Date(appointmentData.appointmentDate),
           startTime: appointmentData.startTime,
           endTime: appointmentData.endTime,
-          tokenNumber,
+          tokenNumber: displayNumber,
           status: AppointmentStatus.BOOKED,
           source: 'REFERRAL',
           demoData: true,
@@ -280,11 +301,16 @@ export class ReferralService {
         data: {
           facilityId: ref.destinationFacilityId,
           appointmentId: appointment.id,
-          department: 'SPECIALIST',
-          tokenNumber,
-          priority: Urgency.HIGH,
+          patientId: ref.patientId,
+          serviceDate,
+          department,
+          tokenPrefix,
+          tokenSequence,
+          displayNumber,
+          priority: 75,
           status: QueueStatus.WAITING,
           estimatedWaitMinutes: 15,
+          source: 'REFERRAL',
         },
       });
 
@@ -303,7 +329,7 @@ export class ReferralService {
           performedBy: performer,
           metadata: {
             appointmentId: appointment.id,
-            tokenNumber,
+            tokenNumber: displayNumber,
             date: appointmentData.appointmentDate,
           },
         },
